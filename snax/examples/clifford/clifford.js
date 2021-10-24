@@ -66,6 +66,7 @@ function CliffordForm({ wasmInstance }) {
     e(
       'div',
       {},
+      e('h4', null, 'Parameters'),
       Object.entries(params).map(([name, value]) =>
         e(
           'fieldset',
@@ -106,12 +107,29 @@ const importObject = {
     },
   },
 };
-WebAssembly.instantiateStreaming(fetch('clifford.wasm'), importObject).then(
-  (obj) => {
+
+const loadWasm = fetch('clifford.wasm');
+
+const modPromise = WebAssembly.instantiateStreaming
+  ? WebAssembly.instantiateStreaming(loadWasm, importObject)
+  : loadWasm
+      .then((res) => res.arrayBuffer())
+      .then((bytes) => WebAssembly.instantiate(bytes, importObject));
+modPromise
+  .then((obj) => {
     wasmInstance = obj.instance.exports;
     ReactDOM.render(
       e(CliffordForm, { wasmInstance }),
       document.querySelector('#container')
     );
-  }
-);
+  })
+  .catch((e) => {
+    document.body.innerHTML = `
+      <p class="l-box">
+        <strong>Error:</strong> ${e}
+      </p>
+      <p class="l-box">
+      If you are seeing this, you probably need to update your browser.<br />
+      </p>
+    `;
+  });
