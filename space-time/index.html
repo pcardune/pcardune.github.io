@@ -1,199 +1,202 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>Space Time</title>
-		<style>
-html, body, #canvas {
-	margin: 0;
-	padding: 0;
-	border: 0;
-}
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space Time: seed life across an infinite galaxy</title>
+<meta name="description" content="Space Time is a calm 2D space exploration game. Pilot a seeding ship through an infinite procedural galaxy, discover star systems with solar probes, survey worlds and reshape them until life can take hold.">
+<meta name="theme-color" content="#080618">
+<meta property="og:title" content="Space Time">
+<meta property="og:description" content="Discover star systems, survey worlds and terraform them, in an infinite procedurally generated galaxy.">
+<meta property="og:image" content="assets/title.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
 
-body {
-	color: white;
-	background-color: black;
-	overflow: hidden;
-	touch-action: none;
-}
+<header class="nav" id="top">
+  <a class="brand" href="#top">Space Time</a>
+  <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu">Menu</button>
+  <nav id="menu">
+    <a href="#concept">The Game</a>
+    <a href="#screenshots">Screenshots</a>
+    <a href="#tutorial">How to Play</a>
+    <a href="wiki/">Wiki</a>
+    <a href="#play" class="btn btn-small">Play</a>
+  </nav>
+</header>
 
-#canvas {
-	display: block;
-}
+<main>
 
-#canvas:focus {
-	outline: none;
-}
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">A calm space exploration game</p>
+    <h1>Space Time</h1>
+    <p class="lead">Fly a lone seeding ship through an infinite galaxy. Find the worlds that could hold life, reshape them, and give life a chance to take over.</p>
+    <p class="cta">
+      <a class="btn" href="#play">Play or download</a>
+      <a class="btn btn-ghost" href="#tutorial">Learn to fly</a>
+    </p>
+  </div>
+</section>
 
-#status, #status-splash, #status-progress {
-	position: absolute;
-	left: 0;
-	right: 0;
-}
+<section id="concept" class="section">
+  <div class="wrap">
+    <h2>Discover. Survey. Terraform. Seed.</h2>
+    <p class="section-lead">You are the pilot of a seeding ship, drifting through a galaxy that never ends. Nature is the only antagonist: there are no enemies and no combat, only a universe that is slow, strange and beautiful.</p>
 
-#status, #status-splash {
-	top: 0;
-	bottom: 0;
-}
+    <ol class="loop">
+      <li><span class="num">1</span><h3>Explore</h3><p>Launch solar probes and bend their paths with starlight to uncover unmapped star systems.</p></li>
+      <li><span class="num">2</span><h3>Survey</h3><p>Orbit planets and moons to measure their mass, atmosphere, water and climate.</p></li>
+      <li><span class="num">3</span><h3>Terraform</h3><p>Haul gases and water by hand, then watch the climate respond over centuries.</p></li>
+      <li><span class="num">4</span><h3>Seed life</h3><p>Microbes, then plants, then animals. Given time, life carries itself further than you can.</p></li>
+    </ol>
+    <p class="note">Space Time is in active development. Exploration, surveying, climate simulation, cryosleep and hand-hauled terraforming are playable today. Seeding life, automation drones and crises are on the roadmap.</p>
+  </div>
+</section>
 
-#status {
-	background-color: #242424;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	visibility: hidden;
-}
+<section class="section alt">
+  <div class="wrap">
+    <h2>What makes it tick</h2>
+    <div class="cards">
+      <article class="card">
+        <h3>An infinite galaxy</h3>
+        <p>Space is a grid of named quadrants, each seeded from its coordinates. The same quadrant always holds the same stars, and the galaxy extends forever in every direction.</p>
+      </article>
+      <article class="card">
+        <h3>Probes and gravity</h3>
+        <p>You only get a handful of probes. Line up shots that curve through the gravity of nearby stars so that one probe discovers several systems.</p>
+      </article>
+      <article class="card">
+        <h3>Real-ish worlds</h3>
+        <p>Spectral classes, habitable zones, frost lines, tidal locking, magnetic fields and escape velocity all shape what each planet turns out to be.</p>
+      </article>
+      <article class="card">
+        <h3>Living climates</h3>
+        <p>Greenhouse gases, ice-albedo feedback, oceans and atmospheric escape interact. Mars slowly loses its air; Venus smothers in CO₂. Your changes ripple through.</p>
+      </article>
+      <article class="card">
+        <h3>Cryosleep</h3>
+        <p>Park in orbit and sleep to speed galaxy time up to a thousandfold. Wake when something worth seeing happens, or when a climate alert goes off.</p>
+      </article>
+      <article class="card">
+        <h3>Everything from orbit</h3>
+        <p>You never land. You work from a ship&rsquo;s cargo hold with a hydrogen fuel tank that keeps you honest about how far you can go.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-#status-splash {
-	max-height: 100%;
-	max-width: 100%;
-	margin: auto;
-}
+<section id="screenshots" class="section">
+  <div class="wrap">
+    <h2>Screenshots</h2>
+    <div class="shots">
+      <figure class="shot wide">
+        <img src="assets/title.jpg" alt="The Space Time title screen: a neon line-art starship above a glowing planet" loading="lazy">
+        <figcaption>The title screen.</figcaption>
+      </figure>
+      <figure class="shot wide">
+        <img src="assets/gallery.jpg" alt="Gallery of vector-style stars and planets: blue O stars, golden G stars, ocean worlds, snowballs and Venus-like planets" loading="lazy">
+        <figcaption>Every kind of star and world in the game&rsquo;s vector-illustration style, from blazing O stars to snowball planets.</figcaption>
+      </figure>
+      <figure class="shot"><img src="assets/screenshots/flying.jpg" alt="Flying between stars and launching a probe" loading="lazy"><figcaption>Flying between stars and launching a probe</figcaption></figure>
+      <figure class="shot"><img src="assets/screenshots/orbit.jpg" alt="Orbiting a surveyed planet" loading="lazy"><figcaption>Orbiting a surveyed planet</figcaption></figure>
+      <figure class="shot"><img src="assets/screenshots/dashboard.jpg" alt="The climate dashboard" loading="lazy"><figcaption>The climate dashboard</figcaption></figure>
+      <figure class="shot"><img src="assets/screenshots/catalog.jpg" alt="The star catalog" loading="lazy"><figcaption>The star catalog</figcaption></figure>
+    </div>
+  </div>
+</section>
 
-#status-progress, #status-notice {
-	display: none;
-}
+<section id="tutorial" class="section alt">
+  <div class="wrap narrow">
+    <h2>How to play</h2>
+    <p class="section-lead">The game teaches you as you go with hints in the ship&rsquo;s log, but here is the whole opening in five steps.</p>
 
-#status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
-}
+    <ol class="steps">
+      <li>
+        <h3>Fly the ship</h3>
+        <p>Press <kbd>←</kbd> and <kbd>→</kbd> to rotate and <kbd>↑</kbd> to thrust. The ship always travels the way it faces, builds speed while you thrust, and bleeds it off when you let go. <kbd>↓</kbd> brakes. Zoom with <kbd>Z</kbd> and <kbd>X</kbd>.</p>
+      </li>
+      <li>
+        <h3>Launch a solar probe</h3>
+        <p>Stars start out undiscovered. Press <kbd>T</kbd> to target a probe: your heading sets its direction, <kbd>↑</kbd>/<kbd>↓</kbd> set its speed, and a curved line previews the path through nearby gravity. Press <kbd>Space</kbd> to fire. You begin with 10 probes, and each planet you survey restocks one, so look for shots that pass through several stars.</p>
+      </li>
+      <li>
+        <h3>Fly into a discovered system</h3>
+        <p>A probed star reveals its planets, spectral class and habitable zone (the mint band). Fly in. The ship shrinks as you approach so that a solar system feels huge. Click a star to read its info panel.</p>
+      </li>
+      <li>
+        <h3>Orbit and survey</h3>
+        <p>Get close to a planet and press <kbd>O</kbd> to enter orbit. Stay there for a few seconds to survey it. Surveyed planets show their atmosphere, climate and supplies. Press <kbd>O</kbd> again to leave, and refuel at gas giants, whose hydrogen keeps the engine running.</p>
+      </li>
+      <li>
+        <h3>Reshape a world</h3>
+        <p>From orbit, harvest gases and water into the cargo hold, then release them into a rocky world or moon. Open the climate dashboard with <kbd>D</kbd> to watch the forecast change. Press <kbd>S</kbd> to cryosleep and fast-forward galaxy time, and <kbd>[</kbd> / <kbd>]</kbd> to pick the rate.</p>
+      </li>
+    </ol>
 
-#status-notice {
-	background-color: #5b3943;
-	border-radius: 0.5rem;
-	border: 1px solid #9b3943;
-	color: #e0e0e0;
-	font-family: 'Noto Sans', 'Droid Sans', Arial, sans-serif;
-	line-height: 1.3;
-	margin: 0 2rem;
-	overflow: hidden;
-	padding: 1rem;
-	text-align: center;
-	z-index: 1;
-}
-		</style>
-		<link id="-gd-engine-icon" rel="icon" type="image/png" href="index.icon.png" />
-<link rel="apple-touch-icon" href="index.apple-touch-icon.png"/>
+    <h3 class="controls-title">Controls</h3>
+    <div class="table-wrap">
+    <table class="controls">
+      <thead><tr><th>Key</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr><td><kbd>←</kbd> <kbd>→</kbd></td><td>Rotate the ship</td></tr>
+        <tr><td><kbd>↑</kbd> / <kbd>↓</kbd></td><td>Thrust / brake</td></tr>
+        <tr><td><kbd>T</kbd></td><td>Toggle probe targeting</td></tr>
+        <tr><td><kbd>Space</kbd></td><td>Launch the aimed probe</td></tr>
+        <tr><td><kbd>Z</kbd> <kbd>X</kbd></td><td>Zoom in / out</td></tr>
+        <tr><td><kbd>O</kbd></td><td>Enter or leave orbit</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Cryosleep (in orbit)</td></tr>
+        <tr><td><kbd>[</kbd> <kbd>]</kbd></td><td>Cryosleep rate: ×10, ×100, ×1,000</td></tr>
+        <tr><td><kbd>D</kbd></td><td>Climate dashboard for the selected or orbited planet</td></tr>
+        <tr><td><kbd>C</kbd></td><td>Star catalog</td></tr>
+        <tr><td><kbd>L</kbd></td><td>Ship&rsquo;s log</td></tr>
+        <tr><td><kbd>H</kbd></td><td>Show or hide the HUD and orbit rings</td></tr>
+        <tr><td><kbd>Esc</kbd></td><td>Pause menu</td></tr>
+      </tbody>
+    </table>
+    </div>
 
-	</head>
-	<body>
-		<canvas id="canvas">
-			Your browser does not support the canvas tag.
-		</canvas>
+    <h3 class="controls-title">Tips</h3>
+    <ul class="tips">
+      <li>Heavier stars bend probe paths harder. Use that to curve a shot through a second or third system.</li>
+      <li>Planets inside the habitable zone are highlighted in mint, and they are the best terraforming candidates.</li>
+      <li>Watch your hydrogen. The log warns at a quarter tank and names the nearest known gas giant.</li>
+      <li>Hover any HUD readout for its exact numbers.</li>
+    </ul>
+  </div>
+</section>
 
-		<noscript>
-			Your browser does not support JavaScript.
-		</noscript>
+<section id="play" class="section">
+  <div class="wrap">
+    <h2>Play Space Time</h2>
+    <p class="section-lead">Space Time is in development. Downloads and a browser version are on the way.</p>
 
-		<div id="status">
-			<img id="status-splash" src="index.png" alt="">
-			<progress id="status-progress"></progress>
-			<div id="status-notice"></div>
-		</div>
+    <div class="cards two">
+      <article class="card">
+        <h3>Download</h3>
+        <p>Downloads for macOS, Windows and Linux are planned. The first build is not available yet.</p>
+        <p><span class="btn btn-disabled" aria-disabled="true">Coming soon</span></p>
+      </article>
+      <article class="card">
+        <h3>Play in your browser</h3>
+        <p>A web version is planned so you can play without installing anything. It is not available yet.</p>
+        <p><span class="btn btn-disabled" aria-disabled="true">Coming soon</span></p>
+      </article>
+    </div>
 
-		<script src="index.js"></script>
-		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":18270048,"index.wasm":35376909},"focusCanvas":true,"gdextensionLibs":[]};
-const GODOT_THREADS_ENABLED = false;
-const engine = new Engine(GODOT_CONFIG);
+  </div>
+</section>
 
-(function () {
-	const statusOverlay = document.getElementById('status');
-	const statusProgress = document.getElementById('status-progress');
-	const statusNotice = document.getElementById('status-notice');
+</main>
 
-	let initializing = true;
-	let statusMode = '';
+<footer class="footer">
+  <div class="wrap">
+    <p><strong>Space Time</strong></p>
+    <p class="small">Planet shaders are adapted from <a href="https://github.com/Deep-Fold/PixelPlanets">Deep-Fold&rsquo;s PixelPlanets</a>. Typeface: Xolonium by Severin Meyer (SIL OFL 1.1).</p>
+  </div>
+</footer>
 
-	function setStatusMode(mode) {
-		if (statusMode === mode || !initializing) {
-			return;
-		}
-		if (mode === 'hidden') {
-			statusOverlay.remove();
-			initializing = false;
-			return;
-		}
-		statusOverlay.style.visibility = 'visible';
-		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
-		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
-		statusMode = mode;
-	}
-
-	function setStatusNotice(text) {
-		while (statusNotice.lastChild) {
-			statusNotice.removeChild(statusNotice.lastChild);
-		}
-		const lines = text.split('\n');
-		lines.forEach((line) => {
-			statusNotice.appendChild(document.createTextNode(line));
-			statusNotice.appendChild(document.createElement('br'));
-		});
-	}
-
-	function displayFailureNotice(err) {
-		console.error(err);
-		if (err instanceof Error) {
-			setStatusNotice(err.message);
-		} else if (typeof err === 'string') {
-			setStatusNotice(err);
-		} else {
-			setStatusNotice('An unknown error occured');
-		}
-		setStatusMode('notice');
-		initializing = false;
-	}
-
-	const missing = Engine.getMissingFeatures({
-		threads: GODOT_THREADS_ENABLED,
-	});
-
-	if (missing.length !== 0) {
-		if (GODOT_CONFIG['serviceWorker'] && GODOT_CONFIG['ensureCrossOriginIsolationHeaders'] && 'serviceWorker' in navigator) {
-			// There's a chance that installing the service worker would fix the issue
-			Promise.race([
-				navigator.serviceWorker.getRegistration().then((registration) => {
-					if (registration != null) {
-						return Promise.reject(new Error('Service worker already exists.'));
-					}
-					return registration;
-				}).then(() => engine.installServiceWorker()),
-				// For some reason, `getRegistration()` can stall
-				new Promise((resolve) => {
-					setTimeout(() => resolve(), 2000);
-				}),
-			]).catch((err) => {
-				console.error('Error while registering service worker:', err);
-			}).then(() => {
-				window.location.reload();
-			});
-		} else {
-			// Display the message as usual
-			const missingMsg = 'Error\nThe following features required to run Godot projects on the Web are missing:\n';
-			displayFailureNotice(missingMsg + missing.join('\n'));
-		}
-	} else {
-		setStatusMode('progress');
-		engine.startGame({
-			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
-					statusProgress.max = total;
-				} else {
-					statusProgress.removeAttribute('value');
-					statusProgress.removeAttribute('max');
-				}
-			},
-		}).then(() => {
-			setStatusMode('hidden');
-		}, displayFailureNotice);
-	}
-}());
-		</script>
-	</body>
+<script src="js/main.js"></script>
+</body>
 </html>
-

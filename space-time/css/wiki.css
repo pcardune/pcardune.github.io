@@ -1,0 +1,142 @@
+/* Wiki pages: reuse the palette and fonts from style.css, with a softer text
+   color for reading. Headings keep the bright cream. */
+:root {
+  --prose: #b9b5cd;
+  --prose-dim: #8f8ba6;
+}
+body.wiki { color: var(--prose); }
+.wiki-wrap { margin: 0 auto; padding: 36px 16px 96px; }
+/* Articles and category pages: contents menu on the left, text beside it. */
+.wiki-wrap--page { max-width: 1160px; display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 56px; align-items: start; }
+.wiki-content { min-width: 0; max-width: 780px; }
+/* The wiki home: wide, so the list of topics needs little scrolling. */
+.wiki-wrap--home { max-width: 1280px; }
+
+/* Header: brand, search, links */
+.wiki .nav { gap: 20px; }
+.wiki .brand { white-space: nowrap; }
+.wiki .nav nav a.current { color: var(--text); }
+.wiki-search { position: relative; flex: 1 1 280px; max-width: 360px; margin-left: auto; }
+.wiki-search input {
+  width: 100%; padding: 8px 40px 8px 14px;
+  background: var(--ink); color: var(--text); font: 15px/1.4 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  border: 1px solid var(--line); border-radius: 8px; outline: none;
+}
+.wiki-search input::placeholder { color: var(--prose-dim); }
+.wiki-search input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(116, 214, 217, .15); }
+.search-hint {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none;
+  min-width: 0; padding: 0 6px; font-size: .8rem; color: var(--prose-dim); border-color: var(--line); border-bottom-width: 1px;
+}
+.wiki-search input:focus + .search-hint { display: none; }
+
+.search-panel {
+  position: absolute; top: calc(100% + 8px); right: 0; width: min(480px, calc(100vw - 32px));
+  max-height: min(70vh, 460px); overflow-y: auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .55); padding: 6px;
+}
+.search-result { display: grid; gap: 2px 10px; grid-template-columns: 1fr auto; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--prose); }
+.search-result:hover, .search-result.active { background: rgba(116, 214, 217, .1); }
+.search-title { font-family: "Xolonium", system-ui, sans-serif; color: var(--text); }
+.search-category { color: var(--prose-dim); font-size: .8rem; align-self: center; }
+.search-excerpt { grid-column: 1 / -1; font-size: .9rem; color: var(--prose-dim); }
+.search-excerpt mark { background: rgba(255, 200, 100, .22); color: var(--prose); border-radius: 2px; }
+.search-empty { margin: 0; padding: 12px; color: var(--prose-dim); }
+.search-empty code { font-size: .85em; }
+
+.crumbs { color: var(--prose-dim); font-size: .9rem; margin-bottom: 10px; }
+.crumbs a { color: var(--prose-dim); text-underline-offset: 3px; }
+.crumbs a:hover { color: var(--accent); }
+
+/* Pages */
+main h1 { color: var(--text); font-size: clamp(2rem, 5vw, 2.9rem); margin: 0 0 10px; line-height: 1.15; }
+.summary { color: var(--prose-dim); font-size: 1.15rem; margin: 0 0 32px; }
+
+article { font-size: 1.05rem; line-height: 1.8; }
+article h2 { font-size: 1.3rem; margin: 2.4rem 0 .5rem; color: var(--text); }
+article h3 { font-size: 1.05rem; margin: 1.6rem 0 .4rem; color: var(--text); }
+article p, article li { max-width: 66ch; }
+article p { margin: 0 0 1rem; }
+article ul, article ol { padding-left: 1.3em; }
+article li { margin-bottom: .4rem; }
+article strong { color: #d3cfe3; font-weight: 600; }
+article a { color: var(--accent); text-underline-offset: 3px; }
+article table { border-collapse: collapse; margin: 1rem 0; }
+article th, article td { text-align: left; padding: 8px 14px; border-bottom: 1px solid var(--line); }
+article th { color: var(--prose-dim); font-weight: normal; font-size: .9rem; }
+article code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .9em; background: var(--ink); padding: 2px 6px; border-radius: 4px; }
+
+/* "In Space Time" note */
+article blockquote {
+  margin: 2.4rem 0 0; padding: 14px 18px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: 10px; font-size: .98rem; line-height: 1.7;
+}
+article blockquote p { margin: 0; max-width: none; }
+article blockquote strong { color: var(--star); font-family: "Xolonium", system-ui, sans-serif; font-weight: normal; letter-spacing: .02em; }
+
+/* Lists of pages */
+.page-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; }
+.page-list li { display: grid; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.page-list a { font-family: "Xolonium", system-ui, sans-serif; color: var(--accent); text-underline-offset: 3px; }
+.page-list span { color: var(--prose-dim); font-size: .95rem; }
+
+.related { margin-top: 3.2rem; }
+.related h2 { font-size: .85rem; color: var(--prose-dim); text-transform: uppercase; letter-spacing: .1em; margin: 0; }
+
+/* Wiki home */
+.categories { columns: 4 250px; column-gap: 20px; margin-top: 8px; }
+.category { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 20px; min-width: 0; break-inside: avoid; margin-bottom: 20px; }
+.category h2 { margin: 0 0 6px; font-size: 1.15rem; }
+.category h2 a { color: var(--text); text-decoration: none; }
+.category h2 a:hover { color: var(--accent); }
+.category p { margin: 0 0 12px; color: var(--prose-dim); font-size: .95rem; line-height: 1.5; }
+.category ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.category li a { color: var(--accent); text-underline-offset: 3px; }
+
+@media (max-width: 960px) {
+  .wiki-wrap--page { display: block; max-width: 800px; }
+  .wiki-nav { display: none; }
+}
+@media (max-width: 720px) {
+  .wiki .nav nav { display: none; }
+  .wiki-search { max-width: none; }
+  .search-panel { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 58px); left: 16px; right: 16px; width: auto; }
+  .search-hint { display: none; }
+}
+@media (max-width: 420px) {
+  .wiki .brand { font-size: .95rem; letter-spacing: .04em; }
+  .wiki .nav { gap: 12px; }
+}
+
+/* Pictures rendered by the game */
+.game-figure { float: right; width: 200px; margin: 4px 0 12px 28px; text-align: center; }
+.game-figure img { display: block; width: 100%; height: auto; }
+.game-figure figcaption { margin-top: 4px; font-size: .85rem; line-height: 1.4; color: var(--prose-dim); }
+article::after { content: ""; display: block; clear: both; }
+@media (max-width: 720px) {
+  .game-figure { float: none; width: 160px; margin: 0 auto 20px; }
+}
+
+/* Contents menu */
+.wiki-nav {
+  position: sticky; top: 84px; max-height: calc(100vh - 108px); overflow-y: auto;
+  font-size: .95rem; padding-right: 8px; scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+}
+.nav-home { display: block; padding: 6px 10px; margin-bottom: 8px; color: var(--prose-dim); text-decoration: none; border-radius: 6px; }
+.nav-home:hover { color: var(--accent); }
+.nav-cat { margin-bottom: 2px; }
+.nav-cat summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 6px;
+  font-family: "Xolonium", system-ui, sans-serif; font-size: .9rem; color: var(--text); cursor: pointer; list-style: none;
+}
+.nav-cat summary::-webkit-details-marker { display: none; }
+.nav-cat summary::before { content: "›"; color: var(--prose-dim); width: .8em; transition: transform .15s; }
+.nav-cat[open] > summary::before { transform: rotate(90deg); }
+.nav-cat summary:hover { background: rgba(116, 214, 217, .08); }
+.nav-count { margin-left: auto; font-family: system-ui, sans-serif; font-size: .8rem; color: var(--prose-dim); }
+.nav-cat ul { list-style: none; margin: 2px 0 10px 18px; padding: 0 0 0 10px; border-left: 1px solid var(--line); }
+.nav-cat li a { display: block; padding: 4px 10px; color: var(--prose); text-decoration: none; border-radius: 6px; line-height: 1.4; }
+.nav-cat li a:hover { color: var(--accent); background: rgba(116, 214, 217, .06); }
+.nav-cat li a[aria-current="page"] { color: var(--text); background: rgba(116, 214, 217, .14); }
+@media (prefers-reduced-motion: reduce) { .nav-cat summary::before { transition: none; } }
